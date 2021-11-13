@@ -12,13 +12,15 @@ import com.exam.service.UserService;
 
 @Service
 public class UserServiceImplementation implements UserService {
-	 @Autowired
+	 
+	@Autowired
 	    private UserRepository userRepository;
 
 	    @Autowired
 	    private RoleRepository roleRepository;
 
 	 //creating user
+	    
 	@Override
 	public User createUser(User user, Set<UserRole> userRoles) throws Exception {
 		// TODO Auto-generated method stub
