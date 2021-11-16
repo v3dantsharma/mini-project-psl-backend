@@ -1,4 +1,4 @@
-package com.exam.conroller;
+package com.exam.controller;
 
 import java.util.HashSet;
 import java.util.Set;

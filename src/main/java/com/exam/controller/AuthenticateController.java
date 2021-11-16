@@ -1,4 +1,4 @@
-package com.exam.conroller;
+package com.exam.controller;
 
 import com.exam.config.JwtUtils;
 import com.exam.helper.UserNotFoundException;
