@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 import java.util.Set;
-
+//service for quiz
 public interface QuizService {
 
     public Quiz addQuiz(Quiz quiz);
