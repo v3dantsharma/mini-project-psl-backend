@@ -33,7 +33,7 @@ public class Quiz {
     @JsonIgnore
     private Set<Question> questions = new HashSet<>();
 
-
+    //setters and getters for quiz
     public Quiz() {
     }
 
