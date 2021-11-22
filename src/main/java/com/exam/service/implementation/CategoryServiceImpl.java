@@ -1,7 +1,7 @@
-package com.exam.service.implementation;
+package com.exam.service.impl;
 
 import com.exam.model.exam.Category;
-import com.exam.repository.CategoryRepository;
+import com.exam.repo.CategoryRepository;
 import com.exam.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

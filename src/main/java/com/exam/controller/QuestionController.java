@@ -21,25 +21,21 @@ public class QuestionController {
     @Autowired
     private QuizService quizService;
 
-    //add question
+    //add question method
     @PostMapping("/")
     public ResponseEntity<Question> add(@RequestBody Question question) {
         return ResponseEntity.ok(this.service.addQuestion(question));
     }
 
-    //update the question
+    //update the question method
     @PutMapping("/")
     public ResponseEntity<Question> update(@RequestBody Question question) {
         return ResponseEntity.ok(this.service.updateQuestion(question));
     }
 
-    //get all question of any quid
+    //get all question of any question ID
     @GetMapping("/quiz/{qid}")
     public ResponseEntity<?> getQuestionsOfQuiz(@PathVariable("qid") Long qid) {
-//        Quiz quiz = new Quiz();
-//        quiz.setqId(qid);
-//        Set<Question> questionsOfQuiz = this.service.getQuestionsOfQuiz(quiz);
-//        return ResponseEntity.ok(questionsOfQuiz);
 
         Quiz quiz = this.quizService.getQuiz(qid);
         Set<Question> questions = quiz.getQuestions();
@@ -53,7 +49,6 @@ public class QuestionController {
 
     }
 
-
     @GetMapping("/quiz/all/{qid}")
     public ResponseEntity<?> getQuestionsOfQuizAdmin(@PathVariable("qid") Long qid) {
         Quiz quiz = new Quiz();
@@ -61,11 +56,7 @@ public class QuestionController {
         Set<Question> questionsOfQuiz = this.service.getQuestionsOfQuiz(quiz);
         return ResponseEntity.ok(questionsOfQuiz);
 
-//        return ResponseEntity.ok(list);
-
-
     }
-
 
     //get single question
     @GetMapping("/{quesId}")
@@ -88,28 +79,24 @@ public class QuestionController {
         int correctAnswers = 0;
         int attempted = 0;
         for (Question q : questions) {
-            //single questions
+            //for single questions
             Question question = this.service.get(q.getQuesId());
             if (question.getAnswer().equals(q.getGivenAnswer())) {
                 //correct
                 correctAnswers++;
-
                 double marksSingle = Double.parseDouble(questions.get(0).getQuiz().getMaxMarks()) / questions.size();
-                //       this.questions[0].quiz.maxMarks / this.questions.length;
+                //this.questions[0].quiz.maxMarks / this.questions.length;
                 marksGot += marksSingle;
-
             }
-
             if (q.getGivenAnswer() != null) {
+                //attempted questions count
                 attempted++;
             }
-
         }
         ;
-
+        //generated response map
         Map<String, Object> map = Map.of("marksGot", marksGot, "correctAnswers", correctAnswers, "attempted", attempted);
         return ResponseEntity.ok(map);
-
     }
 
 }
